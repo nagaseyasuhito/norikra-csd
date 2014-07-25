@@ -1,0 +1,117 @@
+{
+	"name": "NORIKRA",
+	"label": "Norikra",
+	"description": "Norikra is a open source server software provides \"Stream Processing\" with SQL, written in JRuby, runs on JVM, licensed under GPLv2.",
+	"version": "${norikra.version}",
+	"runAs": 
+	{
+		"user": "norikra",
+		"group": "norikra"
+	},
+
+	"inExpressWizard": true,
+	"icon": "images/icon.png",
+	"parcel": 
+	{
+		"repoUrl": "https://github.com/nagaseyasuhito/norikra-csd/raw/repository",
+		"requiredTags": 
+		[
+			"norikra",
+			"cdh"
+		],
+
+		"optionalTags": 
+		[
+			"norikra-plugin"
+		]
+	},
+
+	"rolesWithExternalLinks": 
+	[
+		"NORIKRA"
+	],
+
+	"roles": 
+	[
+		{
+			"name": "NORIKRA",
+			"label": "Server",
+			"pluralLabel": "Servers",
+			"startRunner": 
+			{
+				"program": "scripts/control.sh",
+				"args": 
+				[
+					"start"
+				],
+
+				"environmentVariables": 
+				{
+					"LOGDIR": "${log_dir}",
+					"PORT": "${port}",
+					"UI_PORT": "${ui_port}",
+					"THREADING": "${threading}",
+					"STATS_PATH": "${stats_path}"
+				}
+			},
+
+			"parameters": 
+			[
+				{
+					"name": "port",
+					"label": "Server Port",
+					"description": "The port of the REST server",
+					"required": "true",
+					"type": "port",
+					"default": 26571
+				},
+
+				{
+					"name": "ui_port",
+					"label": "WebUI Server Port",
+					"description": "The port of the WebUI server",
+					"required": "true",
+					"type": "port",
+					"default": 26578
+				},
+
+				{
+					"name": "threading",
+					"label": "Threading Type",
+					"description": "Threading type for performance optimization",
+					"required": "true",
+					"type": "string_enum",
+					"validValues": ["micro", "small", "middle", "large"],
+					"default": "small"
+				},
+
+				{
+					"name": "stats_path",
+					"label": "Stats File Path",
+					"description": "Path to dump stats file",
+					"required": "true",
+					"type": "path",
+					"pathType": "localDataFile",
+					"mode": "0755",
+					"default": "/var/lib/norikra/stats"
+				}
+			],
+
+			"externalLink": 
+			{
+				"name": "webui",
+				"label": "Norikra Web UI",
+				"url": "http://${host}:${ui_port}"
+			},
+
+			"logging": 
+			{
+				"dir": "/var/log/norikra",
+				"filename": "norikra-${host}.log",
+				"configName": "log.dir",
+				"modifiable": true,
+				"loggingType": "log4j"
+			}
+		}
+	]
+}

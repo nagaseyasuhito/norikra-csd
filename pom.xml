@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.github.norikra</groupId>
+	<artifactId>csd</artifactId>
+	<version>0.1-SNAPSHOT</version>
+
+	<scm>
+		<url>https://github.com/nagaseyasuhito/norikra-csd</url>
+		<connection>scm:git:git@git@github.com:nagaseyasuhito/norikra-csd.git</connection>
+		<developerConnection>scm:git:git@github.com:nagaseyasuhito/norikra-csd.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<site>
+			<id>repository</id>
+			<url>scm:git:git@github.com:nagaseyasuhito/norikra-csd.git</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<finalName>NORIKRA-${package.version}</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<tagNameFormat>${norikra.version}-cdh${cdh.version}.p@{project.version}</tagNameFormat>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<scmBranch>gh-pages</scmBranch>
+					<skipDeletedFiles>true</skipDeletedFiles>
+					<content>${project.build.directory}/repository</content>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>deploy</phase>
+						<goals>
+							<goal>publish-scm</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<outputDirectory>${project.build.directory}/repository</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.sdl</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.sdl</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<altDeploymentRepository>internal.repo::default::file://${project.build.directory}</altDeploymentRepository>
+		<package.version>${norikra.version}-cdh${cdh.version}.p${project.version}</package.version>
+		<norikra.version>1.0.5</norikra.version>
+		<cdh.version>5.1.0</cdh.version>
+	</properties>
+</project>
+
