@@ -13,7 +13,7 @@
 	"icon": "images/icon.png",
 	"parcel": 
 	{
-		"repoUrl": "https://github.com/nagaseyasuhito/norikra-csd/raw/repository",
+		"repoUrl": "http://nagaseyasuhito.github.io/norikra-parcel",
 		"requiredTags": 
 		[
 			"norikra",
