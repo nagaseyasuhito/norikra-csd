@@ -81,7 +81,14 @@
 					"description": "Threading type for performance optimization",
 					"required": "true",
 					"type": "string_enum",
-					"validValues": ["micro", "small", "middle", "large"],
+					"validValues": 
+					[
+						"micro",
+						"small",
+						"middle",
+						"large"
+					],
+
 					"default": "small"
 				},
 
