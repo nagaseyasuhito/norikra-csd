@@ -2,13 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.norikra</groupId>
 	<artifactId>csd</artifactId>
-	<version>0.4</version>
+	<version>0.5-SNAPSHOT</version>
 
 	<scm>
 		<url>https://github.com/nagaseyasuhito/norikra-csd</url>
 		<connection>scm:git:git@git@github.com:nagaseyasuhito/norikra-csd.git</connection>
 		<developerConnection>scm:git:git@github.com:nagaseyasuhito/norikra-csd.git</developerConnection>
-		<tag>1.0.5-cdh5.1.0.p0.4</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
