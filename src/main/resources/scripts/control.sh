@@ -27,6 +27,7 @@ case $CMD in
   (start)
 	log "Starting Norikra"
 		ARGS+=("start")
+		ARGS+=("-Xmx$MAX_HEAPSIZE")
 		ARGS+=("--port")
 		ARGS+=("$PORT")
 		ARGS+=("--ui-port")

@@ -48,6 +48,7 @@
 				"environmentVariables": 
 				{
 					"LOGDIR": "${log_dir}",
+					"MAX_HEAPSIZE": "${max_heapsize}",
 					"PORT": "${port}",
 					"UI_PORT": "${ui_port}",
 					"THREADING": "${threading}",
@@ -57,6 +58,17 @@
 
 			"parameters": 
 			[
+				{
+					"name": "max_heapsize",
+					"label": "Java Heap Size of Norikra in Bytes",
+					"description": "Maximum size for the Java process heap memory. Passed to Java -Xmx. Measured in bytes.",
+					"required": "true",
+					"type": "memory",
+					"unit": "bytes",
+					"min": 67108864,
+					"default": 536870912
+				},
+
 				{
 					"name": "port",
 					"label": "Server Port",
