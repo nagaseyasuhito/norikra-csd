@@ -35,7 +35,7 @@ case $CMD in
 		ARGS+=("--stats")
 		ARGS+=("$STATS_PATH")
 		ARGS+=("--log4j-properties-path")
-		ARGS+=("$CONF_DIR")
+		ARGS+=("$CONF_DIR/log4j.properties")
 	;;
 
   (*)
